@@ -11,7 +11,11 @@ import { catchError } from 'rxjs/operators';
 })
 export class StudentService {
 
-  private Url = 'http://localhost:8080/api/students';
+  // TOMCAT
+  private Url = 'http://localhost:8080/StudentDemo/api/students';
+  // CONSOLE
+  //  private Url = 'http://localhost:8080/api/students';
+
   private SearchUrl = '/search';
 
   constructor(private http: HttpClient) { }

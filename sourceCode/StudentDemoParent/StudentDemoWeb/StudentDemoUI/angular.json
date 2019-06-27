@@ -35,6 +35,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "./StudentDemo/",
+              "deployUrl": "/StudentDemo/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
