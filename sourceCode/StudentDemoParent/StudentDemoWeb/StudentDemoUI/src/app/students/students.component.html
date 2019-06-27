@@ -1,0 +1,84 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">{{title}}</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="first name"
+            [(ngModel)]="firstName"
+          >
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="last name"
+            [(ngModel)]="lastName"
+          >
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="search()"
+        >Search</button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="studentsDto && studentsDto.students">
+        <tr *ngFor="let student of studentsDto.students">
+          <th scope="row">{{student.id}}</th>
+          <td>{{student.firstName}}</td>
+          <td>{{student.lastName}}</td>
+          <td>{{student.email}}</td>
+          <td><a
+              class="btn btn-warning btn-sm btn-block"
+              routerLink="/students/{{student.id}}"
+            >Edit</a></td>
+          <td><button
+              type="button"
+              class="btn btn-danger btn-sm btn-block"
+              (click)="deleteStudent(student.id)"
+            >Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a
+            class="page-link"
+            (click)="onPrevious()"
+          >Previous</a></li>
+        <li
+          *ngFor="let pageIndex of pages"
+          class="page-item"
+        ><a
+            class="page-link"
+            (click)="goToPage(pageIndex)"
+          >{{pageIndex}}</a></li>
+        <li class="page-item"><a
+            class="page-link"
+            (click)="onNext()"
+          >Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
